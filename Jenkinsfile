@@ -56,12 +56,13 @@ pipeline {
                 script {
                     // Copy the WAR file to the Tomcat container
                     docker.image('tomcat')
-                          .withRun("-p 8888:8080 --name quirky_blackwell )
+                          .withRun("-p 8888:8080 --name quirky_blackwell ")
                           .inside {
                         docker.cp('path/to/your/war/file.war', 'tomcat-container:/usr/local/tomcat/webapps')
                     }
                  }
                 }
+        }
                                    
               //  sh "cp  /var/lib/jenkins/workspace/CI-CD/target/petclinic.war /opt/apache-tomcat-9.0.65/webapps/ "
            // }
