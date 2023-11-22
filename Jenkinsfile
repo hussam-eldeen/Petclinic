@@ -54,9 +54,9 @@ pipeline {
         stage("Deploy To Tomcat"){
             steps {
                 script {
-                    {
+                    
                         sh "sudo docker cp /home/hussam/Downloads/Petclinic-main.war d927d4fb00bd:/usr/local/tomcat/webapps/"
-                    }
+                    
                     }
                 }
             }
