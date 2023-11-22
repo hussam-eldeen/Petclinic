@@ -58,7 +58,7 @@ pipeline {
                     docker.image('tomcat')
                           .withRun("-p 8888:8080 --name quirky_blackwell ")
                           .inside {
-                        docker.cp('path/to/your/war/file.war', 'tomcat-container:/usr/local/tomcat/webapps')
+                        docker.cp('/home/hussam/Downloads/Petclinic-main.war', 'tomcat-container:/usr/local/tomcat/webapps')
                     }
                  }
                 }
