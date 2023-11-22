@@ -52,13 +52,16 @@ topipeline {
        
         
         stage("Deploy To Tomcat"){
-            steps{
+            steps {
                 script {
-                    // Copy the WAR file to the Tomcat container
-                    docker.image('tomcat').withRun("-p 9999:8080 --name jeninks_tomcat ").inside {sudo docker.cp('/home/hussam/Downloads/Petclinic-main.war', 'tomcat-container:/usr/local/tomcat/webapps')
+                    node {
+                        def tomcatContainer = docker.container('quirky_blackwell')
+                        tomcatContainer.inside {
+                            sh "docker cp /home/hussam/Downloads/Petclinic-main.war .:/usr/local/tomcat/webapps/"
+                        }
                     }
-                 }
                 }
+            }
         }
                                    
               //  sh "cp  /var/lib/jenkins/workspace/CI-CD/target/petclinic.war /opt/apache-tomcat-9.0.65/webapps/ "
