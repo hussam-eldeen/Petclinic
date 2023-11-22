@@ -54,8 +54,8 @@ pipeline {
         stage("Deploy To Tomcat"){
             steps {
                 script {
-                    docker.image('tomcat').inside("d927d4fb00bd") {
-                        sh "sudo docker cp /home/hussam/Downloads/Petclinic-main.war .:/usr/local/tomcat/webapps/"
+                    {
+                        sh "sudo docker cp /home/hussam/Downloads/Petclinic-main.war d927d4fb00bd:/usr/local/tomcat/webapps/"
                     }
                     }
                 }
