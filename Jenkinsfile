@@ -54,15 +54,15 @@ pipeline {
         stage("Deploy To Tomcat"){
             steps {
                 script {
-                    node {
-                        def tomcatContainer = docker.container('quirky_blackwell')
-                        tomcatContainer.inside {
-                            sh "docker cp /home/hussam/Downloads/Petclinic-main.war .:/usr/local/tomcat/webapps/"
+                   
+                        def tomcatContainer = docker.image('tomcat:latest').container('quirky_blackwell')
+                    tomcatContainer.inside {
+                        sh "docker cp /home/hussam/Downloads/Petclinic-main.war .:/usr/local/tomcat/webapps/"
                         }
                     }
                 }
             }
-        }
+       
                                    
               //  sh "cp  /var/lib/jenkins/workspace/CI-CD/target/petclinic.war /opt/apache-tomcat-9.0.65/webapps/ "
            // }
