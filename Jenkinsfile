@@ -53,11 +53,7 @@ pipeline {
         
         stage("Deploy To Tomcat"){
             steps {
-                script {
-                    
-                        sh " docker cp /home/hussam/Downloads/Petclinic-main.war 726198581c58:/usr/local/tomcat/webapps/"
-                    
-                    }
+                     deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://10.20.13.130:8888/')], contextPath: null, war: '**/*.war'
                 }
             }
        
